@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index"
+    "start": "node index",
+    "test": "ava"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/ziro-app/format-date-utc3/issues"
   },
-  "homepage": "https://github.com/ziro-app/format-date-utc3#readme"
+  "homepage": "https://github.com/ziro-app/format-date-utc3#readme",
+  "devDependencies": {
+    "ava": "^3.8.2"
+  }
 }

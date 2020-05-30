@@ -1,12 +1,16 @@
-const hourFormat = hour => {
-	let partsHour = hour.split(':')
-	let hourUtc3 = (parseInt(partsHour[0]) + 21) % 24
-	return `${hourUtc3 >= 10 ? hourUtc3 : `0${hourUtc3}`}:${partsHour[1]}:${partsHour[2]}`
+const hourUTC3 = hours => {
+	let [hour, minute, second] = hours.split(':')
+	const utc3 = (parseInt(hour) + 21) % 24
+	return `${utc3 >= 10 ? utc3 : `0${utc3}`}:${minute}:${second}`
 }
-const dateHourFormatterUTC3 = date => {
-	let utc = date.toUTCString()
-	let parts = utc.substr(5).split(' ')
-	return `${date.getDate()}/${date.getMonth() + 1 >= 10 ? date.getMonth() + 1 : `0${date.getMonth() + 1}`}/${parts[2]} ${hourFormat(parts[3])}`
+const formatDateUTC3 = date => {
+	if (!(date instanceof Date && !isNaN(date))) throw new Error('formatDateUTC3 expects a Date instance')
+	let utc = date.toUTCString() // receive a new Date() and convert it to GMT
+	console.log(utc)
+	const [day, monthEnglish, year, hours] = utc.substr(5).split(' ')
+	const monthNumber = date.getMonth() + 1
+	const month = monthNumber >= 10 ? monthNumber : `0${monthNumber}`
+	return `${day}/${month}/${year} ${hourUTC3(hours)}`
 }
 
-module.exports = dateHourFormatterUTC3
+module.exports = formatDateUTC3
