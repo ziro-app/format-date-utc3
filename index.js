@@ -6,11 +6,20 @@ const hourUTC3 = hours => {
 const formatDateUTC3 = date => {
 	if (!(date instanceof Date && !isNaN(date))) throw new Error('formatDateUTC3 expects a Date instance')
 	let utc = date.toUTCString() // receive a new Date() and convert it to GMT
-	console.log(utc)
 	const [day, monthEnglish, year, hours] = utc.substr(5).split(' ')
 	const monthNumber = date.getMonth() + 1
 	const month = monthNumber >= 10 ? monthNumber : `0${monthNumber}`
 	return `${day}/${month}/${year} ${hourUTC3(hours)}`
 }
 
-module.exports = formatDateUTC3
+const formatDateUTC = date => {
+	if (!(date instanceof Date && !isNaN(date))) throw new Error('formatDateUTC expects a Date instance')
+	let utc = date.toUTCString() // receive a new Date() and convert it to GMT
+	const [day, monthEnglish, year, hours] = utc.substr(5).split(' ')
+	const monthNumber = date.getMonth() + 1
+	const month = monthNumber >= 10 ? monthNumber : `0${monthNumber}`
+	return `${day}/${month}/${year} ${hours}`
+}
+
+exports.formatDateUTC3 = formatDateUTC3
+exports.formatDateUTC = formatDateUTC
