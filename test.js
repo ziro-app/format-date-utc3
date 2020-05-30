@@ -170,8 +170,62 @@ test('28', t => {
     t.deepEqual(calculated, expected)
 })
 test('29', t => {
+    const valueToTest = new Date(0)
+    const calculated = formatDateUTC(valueToTest)
+    const expected = '01/12/1970 00:00:00'
+    t.deepEqual(calculated, expected)
+})
+test('30', t => {
     const valueToTest = new Date('1374') // WATCH FOR THIS CASE, VALID DATE INSTANCE BUT NOT VALID DATE
     const calculated = formatDateUTC(valueToTest)
     const expected = '01/12/1374 00:00:00'
     t.deepEqual(calculated, expected)
+})
+test('31', t => {
+    const valueToTest = new Date(false) // WATCH FOR THIS CASE, VALID DATE INSTANCE BUT NOT VALID DATE
+    const calculated = formatDateUTC(valueToTest)
+    const expected = '01/12/1970 00:00:00'
+    t.is(calculated, expected)
+})
+test('32', t => {
+    const valueToTest = new Date(null) // WATCH FOR THIS CASE, VALID DATE INSTANCE BUT NOT VALID DATE
+    const calculated = formatDateUTC(valueToTest)
+    const expected = '01/12/1970 00:00:00'
+    t.is(calculated, expected)
+})
+test('33', t => {
+    const valueToTest = new Date(undefined)
+    const calculated = t.throws(() => formatDateUTC(valueToTest)).message
+    const expected = 'formatDateUTC expects a Date instance'
+    t.is(calculated, expected)
+})
+test('34', t => {
+    const valueToTest = new Date(0) // WATCH FOR THIS CASE, VALID DATE INSTANCE BUT NOT VALID DATE
+    const calculated = formatDateUTC(valueToTest)
+    const expected = '01/12/1970 00:00:00'
+    t.is(calculated, expected)
+})
+test('35', t => {
+    const valueToTest = new Date(-0) // WATCH FOR THIS CASE, VALID DATE INSTANCE BUT NOT VALID DATE
+    const calculated = formatDateUTC(valueToTest)
+    const expected = '01/12/1970 00:00:00'
+    t.is(calculated, expected)
+})
+test('36', t => {
+    const valueToTest = new Date(NaN)
+    const calculated = t.throws(() => formatDateUTC(valueToTest)).message
+    const expected = 'formatDateUTC expects a Date instance'
+    t.is(calculated, expected)
+})
+test('37', t => {
+    const valueToTest = new Date('')
+    const calculated = t.throws(() => formatDateUTC(valueToTest)).message
+    const expected = 'formatDateUTC expects a Date instance'
+    t.is(calculated, expected)
+})
+test('38', t => {
+    const valueToTest = new Date({})
+    const calculated = t.throws(() => formatDateUTC(valueToTest)).message
+    const expected = 'formatDateUTC expects a Date instance'
+    t.is(calculated, expected)
 })
