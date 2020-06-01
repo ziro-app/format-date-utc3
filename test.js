@@ -166,31 +166,31 @@ test('27', t => {
 test('28', t => {
     const valueToTest = new Date(1374)
     const calculated = formatDateUTC(valueToTest)
-    const expected = '01/12/1970 00:00:01'
+    const expected = '01/01/1970 00:00:01'
     t.deepEqual(calculated, expected)
 })
 test('29', t => {
     const valueToTest = new Date(0)
     const calculated = formatDateUTC(valueToTest)
-    const expected = '01/12/1970 00:00:00'
+    const expected = '01/01/1970 00:00:00'
     t.deepEqual(calculated, expected)
 })
 test('30', t => {
     const valueToTest = new Date('1374') // WATCH FOR THIS CASE, VALID DATE INSTANCE BUT NOT VALID DATE
     const calculated = formatDateUTC(valueToTest)
-    const expected = '01/12/1374 00:00:00'
+    const expected = '01/01/1374 00:00:00'
     t.deepEqual(calculated, expected)
 })
 test('31', t => {
     const valueToTest = new Date(false) // WATCH FOR THIS CASE, VALID DATE INSTANCE BUT NOT VALID DATE
     const calculated = formatDateUTC(valueToTest)
-    const expected = '01/12/1970 00:00:00'
+    const expected = '01/01/1970 00:00:00'
     t.is(calculated, expected)
 })
 test('32', t => {
     const valueToTest = new Date(null) // WATCH FOR THIS CASE, VALID DATE INSTANCE BUT NOT VALID DATE
     const calculated = formatDateUTC(valueToTest)
-    const expected = '01/12/1970 00:00:00'
+    const expected = '01/01/1970 00:00:00'
     t.is(calculated, expected)
 })
 test('33', t => {
@@ -202,13 +202,13 @@ test('33', t => {
 test('34', t => {
     const valueToTest = new Date(0) // WATCH FOR THIS CASE, VALID DATE INSTANCE BUT NOT VALID DATE
     const calculated = formatDateUTC(valueToTest)
-    const expected = '01/12/1970 00:00:00'
+    const expected = '01/01/1970 00:00:00'
     t.is(calculated, expected)
 })
 test('35', t => {
     const valueToTest = new Date(-0) // WATCH FOR THIS CASE, VALID DATE INSTANCE BUT NOT VALID DATE
     const calculated = formatDateUTC(valueToTest)
-    const expected = '01/12/1970 00:00:00'
+    const expected = '01/01/1970 00:00:00'
     t.is(calculated, expected)
 })
 test('36', t => {
